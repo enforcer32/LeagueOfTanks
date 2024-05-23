@@ -26,7 +26,6 @@ excludes
 defines
 {
 	"LOT_ENGINE",
-	"GLFW_INCLUDE_NONE",
 }
 
 includedirs
@@ -34,22 +33,13 @@ includedirs
 	"%{wks.location}",
 	"%{wks.location}/LOTEngine",
 	"%{IncludeDir.spdlog}",
-	"%{IncludeDir.glfw}",
-	"%{IncludeDir.glad}",
 	"%{IncludeDir.glm}",
-	"%{IncludeDir.stb}",
 	"%{IncludeDir.fnv}",
-	"%{IncludeDir.imgui}",
 }
 
 links
 {
 	"spdlog",
-	"glfw",
-	"glad",
-	"stb",
-	"imgui",
-	"opengl32.lib",
 }
 
 filter "system:windows"
@@ -62,7 +52,6 @@ filter "system:windows"
 
 	files
 	{
-		"LOTEngine/Platform/Win32/**.cpp"
 	}
 
 filter "configurations:Debug"

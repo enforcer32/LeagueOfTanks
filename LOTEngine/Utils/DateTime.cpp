@@ -1,17 +1,15 @@
-#include "LOTEnginePCH.h
+#include "LOTEnginePCH.h"
 #include "Utils/DateTime.h"
-
-#include <GLFW/glfw3.h>
 
 namespace LOT
 {
 	double DateTime::GetTimeSeconds()
 	{
-		return glfwGetTime();
+		return 1;
 	}
 
 	double DateTime::GetTimeMilliSeconds()
 	{
-		return glfwGetTime() * 1000;
+		return 1 * 1000;
 	}
 }

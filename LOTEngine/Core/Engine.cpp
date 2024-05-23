@@ -1,4 +1,4 @@
-#include "LOTEnginePCH.h
+#include "LOTEnginePCH.h"
 #include "LOTEngine/Core/Engine.h"
 #include "LOTEngine/Core/Logger.h"
 #include "LOTEngine/Core/DeltaTime.h"

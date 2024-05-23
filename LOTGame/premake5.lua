@@ -21,7 +21,6 @@ includedirs
 	"%{wks.location}",
 	"%{IncludeDir.spdlog}",
 	"%{IncludeDir.glm}",
-	"%{IncludeDir.imgui}",
 }
 
 links

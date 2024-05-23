@@ -1,4 +1,4 @@
-#include "LOTEnginePCH.h
+#include "LOTEnginePCH.h"
 #include "LOTEngine/Core/Window.h"
 #include "LOTEngine/Core/Logger.h"
 
