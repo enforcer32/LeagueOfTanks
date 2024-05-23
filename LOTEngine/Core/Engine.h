@@ -2,10 +2,6 @@
 
 #include "LOTEngine/Core/Window.h"
 #include "LOTEngine/Core/DeltaTime.h"
-#include "LOTEngine/Core/EventManager.h"
-#include "LOTEngine/Renderer/Renderer2D.h"
-#include "LOTEngine/Events/WindowEvents.h"
-#include "LOTEngine/ImGui/AImGui.h"
 
 #include <memory>
 
@@ -35,23 +31,17 @@ namespace LOT
 		virtual void OnDestroy() = 0;
 		virtual void OnProcessInput() = 0;
 		virtual void OnUpdate(DeltaTime dt) = 0;
-		virtual void OnRender(DeltaTime dt, const std::shared_ptr<Renderer2D>& renderer) = 0;
-		virtual void OnImGuiRender(DeltaTime dt) = 0;
+		virtual void OnRender(DeltaTime dt) = 0;
 
 	protected:
 		Engine(const EngineProperties& engineProps);
-		virtual void OnWindowClose(WindowCloseEvent& ev);
-		virtual void OnWindowResize(WindowResizeEvent& ev);
 
 	protected:
 		EngineProperties m_Properties;
-		std::shared_ptr<EventManager> m_EventManager;
-		std::shared_ptr<Renderer2D> m_Renderer2D;
 
 	private:
 		static Engine* s_Instance;
 		bool m_Initialized, m_Running;
 		std::unique_ptr<Window> m_Window;
-		std::unique_ptr<AImGui> m_ImGui;
 	};
 }

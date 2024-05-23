@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 namespace LOT
 {
 	enum KeyCode : uint16_t

@@ -1,7 +1,6 @@
 #include "LOTEnginePCH.h
 #include "LOTEngine/Core/Engine.h"
 #include "LOTEngine/Core/Logger.h"
-#include "LOTEngine/Input/InputManager.h"
 #include "LOTEngine/Core/DeltaTime.h"
 #include "LOTEngine/Utils/DateTime.h"
 #include "LOTEngine/Core/Assertion.h"
@@ -21,36 +20,12 @@ namespace LOT
 		m_Window = std::make_unique<Window>();
 		if (!m_Window->Init(m_Properties.WindowProperties))
 			LOT_LOG_CRITICAL("Failed to Initialize Window");
-
-		m_EventManager = std::make_shared<EventManager>();
-		if (!m_EventManager->Init())
-			LOT_LOG_CRITICAL("Failed to Initialize EventManager");
-
-		if(!InputManager::Init())
-			LOT_LOG_CRITICAL("Failed to Initialize InputManager");
-
-		m_Window->SetupWindowEvents(m_EventManager);
-
-		m_EventManager->Subscribe<WindowCloseEvent>(this, &Engine::OnWindowClose);
-		m_EventManager->Subscribe<WindowResizeEvent>(this, &Engine::OnWindowResize);
-
-		m_Renderer2D = std::make_shared<Renderer2D>();
-		if (!m_Renderer2D->Init(1000))
-			LOT_LOG_CRITICAL("Failed to Initialize Renderer2D");
-
-		m_ImGui = std::make_unique<AImGui>();
-		if(!m_ImGui->Init(m_Window))
-			LOT_LOG_CRITICAL("Failed to Initialize AImGui");
 	}
 
 	Engine::~Engine()
 	{
 		if (m_Initialized)
 		{
-			m_ImGui->Destroy();
-			m_Renderer2D->Destroy();
-			InputManager::Destroy();
-			m_EventManager->Destroy();
 			m_Window->Destroy();
 		}
 	}
@@ -80,14 +55,9 @@ namespace LOT
 			{
 				OnProcessInput();
 				OnUpdate(dt);
-				OnRender(dt, m_Renderer2D);
-
-				m_ImGui->BeginFrame();
-				OnImGuiRender(dt);
-				m_ImGui->EngFrame();
+				OnRender(dt);
 			}
 
-			InputManager::Reset();
 			m_Window->Update();
 		}
 
@@ -107,15 +77,5 @@ namespace LOT
 	Window& Engine::GetWindow()
 	{
 		return *m_Window;
-	}
-
-	void Engine::OnWindowClose(WindowCloseEvent& ev)
-	{
-		Shutdown();
-	}
-
-	void Engine::OnWindowResize(WindowResizeEvent& ev)
-	{
-		m_Renderer2D->SetViewPort(0, 0, ev.GetWidth(), ev.GetHeight());
 	}
 }

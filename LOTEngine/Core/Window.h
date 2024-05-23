@@ -1,10 +1,6 @@
 #pragma once
 
-#include "LOTEngine/Core/EventManager.h"
-
 #include <string>
-
-struct GLFWwindow;
 
 namespace LOT
 {
@@ -33,8 +29,6 @@ namespace LOT
 		uint32_t GetHeight() const;
 		inline const auto* GetNativeWindow() const { return m_NativeWindow; }
 
-		void SetupWindowEvents(const std::shared_ptr<EventManager>& eventManager);
-
 	private:
 		bool InitContext();
 
@@ -45,11 +39,10 @@ namespace LOT
 			uint32_t Width;
 			uint32_t Height;
 			bool VSync;
-			std::shared_ptr<EventManager> EventManager;
 		};
 
 		bool m_Initialized;
-		GLFWwindow* m_NativeWindow;
+		void* m_NativeWindow;
 		WindowPrivateData m_WinPrivData;
 	};
 }
