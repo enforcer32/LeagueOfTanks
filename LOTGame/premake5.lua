@@ -28,6 +28,11 @@ links
 	"LOTEngine"
 }
 
+postbuildcommands
+{
+	"{COPY} %{wks.location}/Dependencies/SFML/bin/**.dll %{wks.location}/Build/%{outputdir}/LOTGame"
+}
+
 filter "system:windows"
 	systemversion "latest"
 

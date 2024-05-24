@@ -35,11 +35,26 @@ includedirs
 	"%{IncludeDir.spdlog}",
 	"%{IncludeDir.glm}",
 	"%{IncludeDir.fnv}",
+	"%{IncludeDir.sfml}",
 }
 
 links
 {
 	"spdlog",
+
+	"%{wks.location}/Dependencies/SFML/lib/flac.lib",
+	"%{wks.location}/Dependencies/SFML/lib/freetype.lib",
+	"%{wks.location}/Dependencies/SFML/lib/ogg.lib",
+	"%{wks.location}/Dependencies/SFML/lib/openal32.lib",
+	"%{wks.location}/Dependencies/SFML/lib/vorbis.lib",
+	"%{wks.location}/Dependencies/SFML/lib/vorbisenc.lib",
+	"%{wks.location}/Dependencies/SFML/lib/vorbisfile.lib",
+
+	"%{wks.location}/Dependencies/SFML/lib/sfml-audio.lib",
+	"%{wks.location}/Dependencies/SFML/lib/sfml-graphics.lib",
+	"%{wks.location}/Dependencies/SFML/lib/sfml-network.lib",
+	"%{wks.location}/Dependencies/SFML/lib/sfml-system.lib",
+	"%{wks.location}/Dependencies/SFML/lib/sfml-window.lib",
 }
 
 filter "system:windows"

@@ -5,6 +5,8 @@
 #include "LOTEngine/Utils/DateTime.h"
 #include "LOTEngine/Core/Assertion.h"
 
+#include <SFML/Graphics.hpp>
+
 namespace LOT
 {
 	Engine* Engine::s_Instance = nullptr;
@@ -37,6 +39,8 @@ namespace LOT
 
 	void Engine::Start()
 	{
+		sf::RenderWindow window(sf::VideoMode(640, 480), "Test");
+
 		if (!OnInit())
 			LOT_LOG_CRITICAL("Engine OnInit Failed");
 
